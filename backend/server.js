@@ -14,7 +14,7 @@ const app = express();
 // ✅ Middleware
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL || "http://localhost:5173", // ✅ Allow frontend URL
+    origin: "https://ecommere-kundans-projects-5efe66a6.vercel.app/", // ✅ Allow frontend URL
     credentials: true, // ✅ Allow cookies
   })
 );
