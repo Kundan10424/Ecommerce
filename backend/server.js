@@ -14,7 +14,7 @@ const app = express();
 // ✅ Middleware
 app.use(
   cors({
-    origin: "https://ecommere-kundans-projects-5efe66a6.vercel.app/", // ✅ Allow frontend URL
+    origin: process.env.FRONTEND_URL|| "https://ecommere-git-main-kundans-projects-5efe66a6.vercel.app/", // ✅ Allow frontend URL
     credentials: true, // ✅ Allow cookies
   })
 );
