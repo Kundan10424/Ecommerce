@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import Loader from "../components/Loader"; // ✅ Import Loader component
 
+const API_URL = "https://backend-hsg5.onrender.com/api"
+
 const Shop = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true); // ✅ Loading state
@@ -14,7 +16,7 @@ const Shop = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/products");
+        const response = await axios.get(`${API_URL}/products`);
         setProducts(response.data);
       } catch (error) {
         console.error("Error fetching products:", error);

@@ -4,6 +4,8 @@ import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+const API_URL = "https://backend-hsg5.onrender.com/api"
+
 const Buy = () => {
     const { title } = useParams();
     const [product, setProduct] = useState(null);
@@ -18,7 +20,7 @@ const Buy = () => {
 
     const fetchProduct = async () => {
         try {
-            const response = await axios.get(`http://localhost:5000/api/products/title/${encodeURIComponent(title)}`);
+            const response = await axios.get(`${API_URL}/products/title/${encodeURIComponent(title)}`);
             setProduct(response.data);
         } catch (err) {
             setError(err.response?.data?.message || "Error fetching product");
@@ -40,7 +42,7 @@ const Buy = () => {
 
         try {
             await axios.post(
-                "http://localhost:5000/api/cart/add",
+                `${API_URL}/cart/add`,
                 
                 {
                     productId: product._id,

@@ -5,6 +5,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 
+const API_URL = "https://backend-hsg5.onrender.com/api"
+
 const Checkout = () => {
   const navigate = useNavigate();
   const [selectedState, setSelectedState] = useState("");
@@ -37,7 +39,7 @@ const Checkout = () => {
 
   const fetchCart = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/cart", {
+      const response = await axios.get(`${API_URL}/cart`, {
         withCredentials: true,
       });
 

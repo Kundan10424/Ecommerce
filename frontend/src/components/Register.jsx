@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaUser, FaEnvelope, FaEye, FaEyeSlash, FaPhone } from "react-icons/fa";
 import axios from "axios"; // Using axios directly instead of an external authService
 
+const API_URL = "https://backend-hsg5.onrender.com/api"
+
 const Register = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -37,7 +39,7 @@ const Register = () => {
 
         try {
             const response = await axios.post(
-                "http://localhost:5000/api/auth/register",
+                `${API_URL}/auth/register`,
                 {
                     name: `${formData.firstName} ${formData.lastName}`,
                     phone: formData.phone,

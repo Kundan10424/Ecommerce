@@ -5,6 +5,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import axios from "axios";
 import Logo from "../assests/logo.png";
 
+const API_URL = "https://backend-hsg5.onrender.com/api"
+
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -15,7 +17,7 @@ const Navbar = () => {
   useEffect(() => {
     const checkAuthStatus = async () => {
         try {
-            const res = await axios.get("http://localhost:5000/api/auth/me", {
+            const res = await axios.get(`${API_URL}/auth/me`, {
                 withCredentials: true, // ✅ Ensures cookies are sent
             });
 
@@ -40,7 +42,7 @@ const Navbar = () => {
     // ✅ Logout Function (Uses API Instead of LocalStorage)
     const handleLogout = async () => {
         try {
-            await axios.post("http://localhost:5000/api/auth/logout", {}, { withCredentials: true });
+            await axios.post(`${API_URL}/auth/logout`, {}, { withCredentials: true });
 
             setIsAuthenticated(false);
             setUserName("");

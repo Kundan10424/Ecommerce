@@ -1,5 +1,8 @@
 
 import customer from "../assests/customer.png"
+import customer2 from "../assests/customer2.png"
+import customer3 from "../assests/customer3.png"
+import customer4 from "../assests/customer4.png"
 
 export const commonDescription = 
     "At Prozino, we are committed to providing a seamless shopping experience from start to finish. Our on-time delivery promise ensures your order reaches you within the estimated timeframe, accompanied by secure packaging to protect your purchase. You’ll receive real-time tracking updates and timely notifications to keep you informed about your order status. With a customer-focused approach, we offer hassle-free returns, easy exchanges, and reliable post-delivery support to address any concerns.";
@@ -102,26 +105,26 @@ export const review = [
     {
         id: 1,
         text: "As a footwear specialist,  I highly recommend ROHITZ FITTINGS for their exceptional quality and craftsmanship.",
-        name: "John Doe",
+        name: "Rahul Kumar",
         image: customer,
     },
     {
         id: 2,
         text: "I love the unique designs of ROHITZ FITTINGS. They are always on trend and the quality is amazing.",
-        name: "Jane Doe",
-        image: customer,
+        name: "Neeraj Kumar",
+        image: customer2,
         },
     {
         id: 3,
         text: "ROHITZ FITTINGS is a brand that I trust. Their products are always of the highest quality and they have a wide range of products.",
-        name: "John Doe",
-        image: customer,
+        name: "Priya Singh",
+        image: customer3,
         },
     {
         id: 4,
         text: "I absolutely love the brand ROHITZ FITTINGS. They have a great selection of shoes and I can't wait to try their products.",
-        name: "Jane Doe",
-        image: customer,
+        name: "Sumit Goyal",
+        image: customer4,
         }
 ]
 

@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash, FaEnvelope } from "react-icons/fa";
 import axios from "axios";
 
+const API_URL = "https://backend-hsg5.onrender.com/api"
+
 const Login = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -15,30 +17,6 @@ const Login = () => {
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
-    // const handleLogin = async (e) => {
-    //     e.preventDefault();
-    //     setLoading(true);
-    //     setError(null);
-
-    //     try {
-    //         const res = await axios.post(
-    //             "http://localhost:5000/api/auth/login",
-    //             { email, password },
-    //             { withCredentials: true } // ✅ Send cookies with request
-    //         );
-
-    //         if (res.data.success) {
-    //             navigate("/");
-    //         } else {
-    //             setError(res.data.message || "Invalid credentials, please try again.");
-    //         }
-    //     } catch (error) {
-    //         setError(error.response?.data?.message || "Login failed. Please check your credentials.");
-    //         console.error("Login Error:", error.response?.data || error.message);
-    //     } finally {
-    //         setLoading(false);
-    //     }
-    // };
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -50,7 +28,7 @@ const Login = () => {
     
         try {
             const res = await axios.post(
-                "http://localhost:5000/api/auth/login",
+                `${API_URL}/auth/login`,
                 { email, password },
                 { withCredentials: true }
             );
