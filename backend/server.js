@@ -12,12 +12,15 @@ dotenv.config();
 const app = express();
 
 // ✅ Middleware
-app.use(
-  cors({
-    origin: process.env.FRONTEND_URL|| "https://ecommere-git-main-kundans-projects-5efe66a6.vercel.app/", // ✅ Allow frontend URL
-    credentials: true, // ✅ Allow cookies
-  })
-);
+const cors = require("cors");
+
+app.use(cors({
+    origin: ["http://localhost:5173", "https://backend-hsg5.onrender.com"], // ✅ Update this!
+    credentials: true, // ✅ Allows cookies
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"]
+}));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser()); // ✅ Parse cookies
