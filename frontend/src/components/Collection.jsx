@@ -15,6 +15,8 @@ const Collection = () => {
                     withCredentials: true, // ✅ Enable cookies-based authentication
                 });
 
+                console.log("API response:" , response.data)
+
                 setProducts(response.data || []);
             } catch (error) {
                 console.error("❌ Error fetching products:", error.response?.data || error.message);
