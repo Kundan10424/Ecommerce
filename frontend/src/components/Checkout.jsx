@@ -193,16 +193,14 @@ const Checkout = () => {
       </div>
 
       {/* Right Section - Order Summary */} 
-      <div className="w-full md:w-1/3 p-6 mt-6 md:mt-0 bg-gray-100 shadow-lg rounded-lg">
-        <h2 className="text-xl font-semibold text-gray-900">Order Summary</h2>
-        <div className="mt-4">
-          <p>Total Amount: ₹{totalAmount}</p>
-          <p>Discount: -₹{discount}</p>
-          <p>Shipping Fee: {shippingFee}</p>
-          <p className="text-lg font-bold">Final Total: ₹{finalTotal}</p>
-          <button onClick={handlePlaceOrder} className="w-full bg-blue-500 text-white p-3 mt-4 rounded-lg">
-            Place Order
-          </button>
+      <div className="w-full md:w-1/2 p-2">
+        <div className="p-6 border border-gray-200 bg-gray-100 rounded-lg shadow-md">
+          <h2 className="text-lg font-bold">Total</h2>
+          <div className="flex justify-between"><span>Total</span><span>₹ {totalAmount.toFixed(2)}</span></div>
+          <div className="flex justify-between text-green-600"><span>Discount</span><span>₹ {discount.toFixed(2)}</span></div>
+          <div className="flex justify-between"><span>Shipping Fee</span><span>{shippingFee}</span></div>
+          <div className="flex justify-between font-bold border-t mt-2"><span>Sub Total</span><span>₹ {finalTotal.toFixed(2)}</span></div>
+          <button className="mt-5 w-full bg-red-600 text-white p-3 rounded-md" onClick={handlePlaceOrder}>Place Order</button>
         </div>
       </div>
 
