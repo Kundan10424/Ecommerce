@@ -11,9 +11,6 @@ import productRoutes from "./routes/productRoutes.js";
 dotenv.config();
 const app = express();
 
-// ✅ Middleware
-const cors = require("cors");
-
 app.use(cors({
     origin: ["http://localhost:5173", "https://backend-hsg5.onrender.com"], // ✅ Update this!
     credentials: true, // ✅ Allows cookies
