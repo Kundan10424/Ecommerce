@@ -13,10 +13,10 @@ const app = express();
 
 
 app.use(cors({
-    origin: ["https://ecommere.vercel.app/",], // ✅ Update this!
-    credentials: true, // ✅ Allows cookies
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"]
+  origin: ["https://ecommere.vercel.app"], // ✅ Only frontend URL
+  credentials: true, // ✅ Allows cookies
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
 app.use(express.json());
