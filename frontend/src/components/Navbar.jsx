@@ -14,43 +14,45 @@ const Navbar = () => {
     const navigate = useNavigate();
 
     // ✅ Fetch authentication status from the backend
-  useEffect(() => {
-    const checkAuthStatus = async () => {
-        try {
-            const res = await axios.get(`${API_URL}/auth/me`, {
-                withCredentials: true, // ✅ Ensures cookies are sent
-            });
-
-            console.log("Auth response:", res.data);
-
-            if (res.data && (res.data.user || res.data.name)) {
-                setIsAuthenticated(true);
-                setUserName(res.data.user?.name || res.data.name);
-            } else {
-                throw new Error("Invalid authentication response");
+    useEffect(() => {
+        const checkAuthStatus = async () => {
+            try {
+                const res = await axios.get(`${API_URL}/auth/me`, {
+                    withCredentials: true,
+                });
+    
+                if (res.data && res.data.user) {
+                    setIsAuthenticated(true);
+                    setUserName(res.data.user.name);
+                    localStorage.setItem("user", JSON.stringify(res.data.user)); // Store user details
+                } else {
+                    throw new Error("Invalid response");
+                }
+            } catch (error) {
+                setIsAuthenticated(false);
+                setUserName("");
+                localStorage.removeItem("user"); // Clear on failure
             }
-        } catch (error) {
-            setIsAuthenticated(false);
-            setUserName("");
-            console.error("Auth check failed:", error.response ? error.response.data : error.message);
-        }
-    };
-    checkAuthStatus();
-}, []);
+        };
+    
+        checkAuthStatus();
+    }, []);
+    
 
 
     // ✅ Logout Function (Uses API Instead of LocalStorage)
     const handleLogout = async () => {
         try {
             await axios.post(`${API_URL}/auth/logout`, {}, { withCredentials: true });
-
             setIsAuthenticated(false);
             setUserName("");
+            localStorage.removeItem("user"); // Clear stored user details
             navigate("/");
         } catch (error) {
             console.error("Logout failed:", error.response ? error.response.data : error.message);
         }
     };
+    
 
     const toggleMenu = () => {
         setIsMenuOpen((prev) => !prev);
