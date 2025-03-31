@@ -5,7 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 
-const API_URL = "https://ecommerce-production-aa96.up.railway.app/api"
+const API_URL = "https://ecommerce-production-aa96.up.railway.app/api";
 
 const Checkout = () => {
   const navigate = useNavigate();
@@ -17,7 +17,6 @@ const Checkout = () => {
   const [finalTotal, setFinalTotal] = useState(0);
   const [shippingFee, setShippingFee] = useState("₹ 50");
 
-  // Form Fields
   const [formData, setFormData] = useState({
     fullName: "",
     country: "",
@@ -39,10 +38,7 @@ const Checkout = () => {
 
   const fetchCart = async () => {
     try {
-      const response = await axios.get(`${API_URL}/cart`, {
-        withCredentials: true,
-      });
-
+      const response = await axios.get(`${API_URL}/cart`, { withCredentials: true });
       const cartItems = response.data.cart?.items || [];
       setCart(cartItems);
       calculateTotals(cartItems);
@@ -72,19 +68,13 @@ const Checkout = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-
-    // ZIP Code & Phone Validation
     if (name === "zipCode" && !/^\d{0,6}$/.test(value)) return;
     if (name === "phone" && !/^\d{0,10}$/.test(value)) return;
-
     setFormData({ ...formData, [name]: value });
   };
 
-
-
   const validateForm = () => {
     let newErrors = {};
-
     if (!formData.fullName.trim()) newErrors.fullName = "Full Name is required";
     if (!formData.state) newErrors.state = "State is required";
     if (!formData.city) newErrors.city = "City is required";
@@ -107,153 +97,69 @@ const Checkout = () => {
     } else {
       setShowPopup(true);
       toast.warning("Please fill the required details", { position: "top-center" }),
-      setTimeout(() => setShowPopup(false), 2000);
+        setTimeout(() => setShowPopup(false), 2000);
     }
   };
 
   return (
-    <div className="container flex md:flex-row flex-col min-w-8xl p-14">
-      {/* Popup Notification */}
-      {showPopup && (
-        <div className="fixed top-10 left-1/2 transform -translate-x-1/2 bg-red-600 text-white px-4 py-2 rounded-md shadow-lg">
-          ⚠️ Please fill in all required fields!
-        </div>
-      )}
-
+    <div className="container flex flex-col md:flex-row gap-10 p-6 md:p-14 w-full">
       {/* Left Section - Billing Details */}
-      <div className="min-w-1/2 mx-20">
+      <div className="w-full md:w-1/2 bg-white p-6 rounded-lg shadow-md">
         <h1 className="text-3xl font-semibold text-black mb-6">Billing Details</h1>
-        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-5">
-
-          {/* Full Name & Country */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {/* Full Name */}
           <div className="flex flex-col">
             <label className="mb-1 font-medium">Full Name*</label>
-            <input
-              type="text"
-              name="fullName"
-              value={formData.fullName}
-              onChange={handleInputChange}
-              placeholder="Enter your full name"
-              className={`p-2 bg-fuchsia-100 rounded-lg ${errors.fullName ? "border-2 border-red-600" : ""}`}
-            />
+            <input type="text" name="fullName" value={formData.fullName} onChange={handleInputChange} className="p-2 bg-gray-100 rounded-lg" />
           </div>
 
-            <div className="flex flex-col">
+          {/* Country */}
+          <div className="flex flex-col">
             <label className="mb-1 font-medium">Country*</label>
-            <select
-                name="country"
-                value={formData.country}
-                onChange={handleInputChange}
-                className="p-2 bg-fuchsia-100 rounded-lg"
-            >
-                <option value="" className="bg-white">---Select---</option>
-                <option value="India" className="bg-white">India</option>
+            <select name="country" value={formData.country} onChange={handleInputChange} className="p-2 bg-gray-100 rounded-lg">
+              <option value="">---Select---</option>
+              <option value="India">India</option>
             </select>
-            </div>
-
-          {/* Street Address & Landmark */}
-          <div className="flex flex-col">
-            <label className="mb-1 font-medium">Street Address*</label>
-            <input type="text" 
-            name="street" 
-            value={formData.street} 
-            onChange={handleInputChange}
-            placeholder="Street Address" 
-            className="p-2 bg-fuchsia-100 rounded-lg" />
           </div>
 
-          <div className="flex flex-col">
-            <label className="mb-1 font-medium">Address / Landmark*</label>
-            <input type="text" 
-            name="landmark" 
-            value={formData.landmark} 
-            onChange={handleInputChange}
-            placeholder="Nearby"  
-            className="p-2 bg-fuchsia-100 rounded-lg" />
+          {/* Street Address */}
+          <div className="flex flex-col col-span-2">
+            <label className="mb-1 font-medium">Street Address*</label>
+            <input type="text" name="street" value={formData.street} onChange={handleInputChange} className="p-2 bg-gray-100 rounded-lg" />
           </div>
 
           {/* State & City */}
           <div className="flex flex-col">
             <label className="mb-1 font-medium">State*</label>
-            <select name="state" 
-            value={formData.state} 
-            onChange={handleStateChange}
-            placeholder="Street Address" 
-            className="p-2 rounded-lg bg-fuchsia-100">
-              <option className="bg-white" value="">---Select---</option>
+            <select name="state" value={formData.state} onChange={handleStateChange} className="p-2 bg-gray-100 rounded-lg">
+              <option value="">---Select---</option>
               {Object.keys(stateCities).map((state) => (
-                <option 
-                key={state} 
-                value={state}
-                className="bg-white">
-                  {state}
-                </option>
+                <option key={state} value={state}>{state}</option>
               ))}
             </select>
           </div>
 
           <div className="flex flex-col">
             <label className="mb-1 font-medium">City*</label>
-            <select name="city" 
-            value={formData.city} 
-            onChange={handleInputChange} 
-            className="p-2 bg-fuchsia-100 rounded-lg">
-              <option className="bg-white" value="">---Select---</option>
+            <select name="city" value={formData.city} onChange={handleInputChange} className="p-2 bg-gray-100 rounded-lg">
+              <option value="">---Select---</option>
               {cities.map((city) => (
-                <option 
-                key={city} 
-                value={city}
-                className="bg-white">
-                  {city}
-                </option>
+                <option key={city} value={city}>{city}</option>
               ))}
             </select>
-          </div>
-
-
-          {/* ZIP Code & Phone */}
-          <div className="flex flex-col">
-            <label className="mb-1 font-medium">ZIP Code*</label>
-            <input type="text" 
-            name="zipCode" 
-            value={formData.zipCode} 
-            onChange={handleInputChange}
-            placeholder="Enter your Postal Code" 
-            className="p-2 bg-fuchsia-100 rounded-lg" />
-          </div>
-
-          <div className="flex flex-col">
-            <label className="mb-1 font-medium">Phone Number*</label>
-            <input type="text" 
-            name="phone" 
-            value={formData.phone} 
-            onChange={handleInputChange}
-            placeholder ="Enter your Phone No." 
-            className="p-2 bg-fuchsia-100 rounded-lg" />
-          </div>
-
-          {/* Email Address */}
-          <div className="flex flex-col col-span-2">
-            <label className="mb-1 font-medium">Email Address*</label>
-            <input type="email" 
-            name="email" 
-            value={formData.email} 
-            onChange={handleInputChange} 
-            placeholder="Enter your Email" 
-            className="p-2 bg-fuchsia-100 rounded-lg" />
           </div>
         </div>
       </div>
 
       {/* Right Section - Order Summary */}
-      <div className="md:w-1/2 p-2">
-        <div className="mt-10 p-5 border border-gray-100 bg-gray-100 rounded-lg">
+      <div className="w-full md:w-1/2 p-2">
+        <div className="p-6 border border-gray-200 bg-gray-100 rounded-lg shadow-md">
           <h2 className="text-lg font-bold">Total</h2>
           <div className="flex justify-between"><span>Total</span><span>₹ {totalAmount.toFixed(2)}</span></div>
           <div className="flex justify-between text-green-600"><span>Discount</span><span>₹ {discount.toFixed(2)}</span></div>
           <div className="flex justify-between"><span>Shipping Fee</span><span>{shippingFee}</span></div>
           <div className="flex justify-between font-bold border-t mt-2"><span>Sub Total</span><span>₹ {finalTotal.toFixed(2)}</span></div>
-          <button className="mt-5 w-full bg-red-600 text-white p-2 rounded-md" onClick={handlePlaceOrder}>Place Order</button>
+          <button className="mt-5 w-full bg-red-600 text-white p-3 rounded-md" onClick={handlePlaceOrder}>Place Order</button>
         </div>
       </div>
     </div>
