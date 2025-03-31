@@ -11,8 +11,9 @@ import productRoutes from "./routes/productRoutes.js";
 dotenv.config();
 const app = express();
 
+
 app.use(cors({
-    origin: ["http://localhost:5173", "https://backend-hsg5.onrender.com"], // ✅ Update this!
+    origin: ["https://ecommere.vercel.app/",], // ✅ Update this!
     credentials: true, // ✅ Allows cookies
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"]

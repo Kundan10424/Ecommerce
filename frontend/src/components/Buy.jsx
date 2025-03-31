@@ -4,7 +4,7 @@ import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const API_URL = "https://backend-hsg5.onrender.com/api"
+const API_URL = "https://ecommerce-production-aa96.up.railway.app/api"
 
 const Buy = () => {
     const { title } = useParams();

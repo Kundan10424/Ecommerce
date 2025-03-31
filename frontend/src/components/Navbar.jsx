@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import axios from "axios";
 import Logo from "../assests/logo.png";
 
-const API_URL = "https://backend-hsg5.onrender.com/api"
+const API_URL = "https://ecommerce-production-aa96.up.railway.app/api"
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);

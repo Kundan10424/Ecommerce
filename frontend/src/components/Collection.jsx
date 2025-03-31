@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import Loader from "../components/Loader"; // ✅ Import Loader component
 
-const API_URL = "https://backend-hsg5.onrender.com/api"
+const API_URL = "https://ecommerce-production-aa96.up.railway.app/api"
 const Collection = () => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);

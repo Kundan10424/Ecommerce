@@ -5,7 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 
-const API_URL = "https://backend-hsg5.onrender.com/api"
+const API_URL = "https://ecommerce-production-aa96.up.railway.app/api"
 
 const Checkout = () => {
   const navigate = useNavigate();

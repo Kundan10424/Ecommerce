@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaUser, FaEnvelope, FaEye, FaEyeSlash, FaPhone } from "react-icons/fa";
 import axios from "axios"; // Using axios directly instead of an external authService
 
-const API_URL = "https://backend-hsg5.onrender.com/api"
+const API_URL = "https://ecommerce-production-aa96.up.railway.app/api"
 
 const Register = () => {
     useEffect(() => {

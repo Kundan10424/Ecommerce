@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "https://backend-hsg5.onrender.com/api"; // Base API URL
+const API_URL = "https://ecommerce-production-aa96.up.railway.app/api"; // Base API URL
 
 // Register User
 export const registerUser = async (userData) => {
