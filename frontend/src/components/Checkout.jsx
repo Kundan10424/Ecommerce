@@ -198,8 +198,8 @@ const Checkout = () => {
           <h2 className="text-lg font-bold">Total</h2>
           <div className="flex justify-between"><span>Total</span><span>₹ {totalAmount.toFixed(2)}</span></div>
           <div className="flex justify-between text-green-600"><span>Discount</span><span>₹ {discount.toFixed(2)}</span></div>
-          <div className="flex justify-between"><span>Shipping Fee</span><span>{shippingFee}</span></div>
-          <div className="flex justify-between font-bold border-t mt-2"><span>Sub Total</span><span>₹ {finalTotal.toFixed(2)}</span></div>
+          <div className="flex justify-between"><span>Shipping Fee</span><span  className={shippingFee === "Free" ? "text-green-600" : "text-gray-700"}>{shippingFee}</span></div>
+          <div className="flex justify-between font-bold border-t mt-2"><span>Sub Total</span><span className="text-blue-600">₹ {finalTotal.toFixed(2)}</span></div>
           <button className="mt-5 w-full bg-red-600 text-white p-3 rounded-md" onClick={handlePlaceOrder}>Place Order</button>
         </div>
       </div>
