@@ -69,7 +69,7 @@ const Collection = () => {
                                         <span className="text-gray-500 line-through">₹{item.oldPrice}</span>
                                     ) : null}
                                     &nbsp;|&nbsp;
-                                    <span className="text-black">₹{item.newPrice || "N/A"}</span>
+                                    <span className="text-black">₹{item.newPrice || "Price not Available"}</span>
                                 </div>
 
                                 {/* Discount */}

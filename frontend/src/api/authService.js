@@ -3,9 +3,12 @@ import axios from "axios";
 const API_URL = "https://ecommerce-production-aa96.up.railway.app/api"; // Base API URL
 
 // Register User
+// // Register User
 export const registerUser = async (userData) => {
   try {
-    const response = await axios.post(`${API_URL}/auth/register`, userData);
+    const response = await axios.post(`${API_URL}/auth/register`, userData, {
+      withCredentials: true,  // ✅ Ensure cookies are sent
+    });
     return response.data;
   } catch (error) {
     throw error.response?.data?.msg || "Registration failed";
@@ -15,25 +18,28 @@ export const registerUser = async (userData) => {
 // Login User & Fetch Cart
 export const loginUser = async (userData) => {
   try {
-    const response = await axios.post(`${API_URL}/auth/login`, userData);
-    const { user, token } = response.data;
+    const response = await axios.post(`${API_URL}/auth/login`, userData, {
+      withCredentials: true,  // ✅ Ensures session-based authentication
+    });
 
-    // Fetch the user's cart after login
-    const cart = await getCart(token);
+    const { user } = response.data;
 
-    return { user, token, cart };
+    // Fetch the user's cart (no need for a token now)
+    const cart = await getCart();
+
+    return { user, cart };
   } catch (error) {
     throw error.response?.data?.message || "Login failed";
   }
 };
 
 // Add item to cart
-export const addToCart = async (token, productId, quantity = 1) => {
+export const addToCart = async (productId, quantity = 1) => {
   try {
     const response = await axios.post(
       `${API_URL}/cart/add`,
       { productId, quantity },
-      { headers: { Authorization: `Bearer ${token}` } }
+      { withCredentials: true } // ✅ Send cookies
     );
     return response.data;
   } catch (error) {
@@ -42,10 +48,10 @@ export const addToCart = async (token, productId, quantity = 1) => {
 };
 
 // Get user's cart
-export const getCart = async (token) => {
+export const getCart = async () => {
   try {
     const response = await axios.get(`${API_URL}/cart`, {
-      headers: { Authorization: `Bearer ${token}` },
+      withCredentials: true, // ✅ Ensures authentication via cookies
     });
     return response.data.cart;
   } catch (error) {
@@ -55,10 +61,10 @@ export const getCart = async (token) => {
 };
 
 // Remove item from cart
-export const removeFromCart = async (token, productId) => {
+export const removeFromCart = async (productId) => {
   try {
     const response = await axios.delete(`${API_URL}/cart/remove/${productId}`, {
-      headers: { Authorization: `Bearer ${token}` },
+      withCredentials: true, // ✅ Send cookies instead of token
     });
     return response.data;
   } catch (error) {
