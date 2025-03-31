@@ -191,7 +191,35 @@ const Checkout = () => {
           </div>
         </div>
       </div>
+
+      {/* Right Section - Order Summary */} 
+      <div className="w-full md:w-1/3 p-6 mt-6 md:mt-0 bg-gray-100 shadow-lg rounded-lg">
+        <h2 className="text-xl font-semibold text-gray-900">Order Summary</h2>
+        <div className="mt-4">
+          <p>Total Amount: ₹{totalAmount}</p>
+          <p>Discount: -₹{discount}</p>
+          <p>Shipping Fee: {shippingFee}</p>
+          <p className="text-lg font-bold">Final Total: ₹{finalTotal}</p>
+          <button onClick={handlePlaceOrder} className="w-full bg-blue-500 text-white p-3 mt-4 rounded-lg">
+            Place Order
+          </button>
+        </div>
+      </div>
+
+      {/* Popup */}
+      {showPopup && (
+        <div className="fixed top-0 left-0 w-full h-full z-50 bg-black bg-opacity-50 flex justify-center items-center">
+          <div className="p-6 bg-white rounded-lg shadow-md">
+            <p className="text-center text-lg font-medium">Please fill the required details</p>
+            <button onClick={() => setShowPopup(false)} className="w-16 h-8 bg-blue-500 text-white rounded-full px-4 py-2 mt-4">
+              Close
+            </button>
+          </div>
+        </div>
+      )}
+      <ToastContainer />
     </div>
+ 
   );
 };
 
