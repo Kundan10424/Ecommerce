@@ -3,7 +3,9 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
 import cookieParser from "cookie-parser"; // ✅ Added for cookies
-import process from "process"; 
+import path from 'path';
+
+// import process from "process"; 
 import authRoutes from "./routes/authRoute.js";
 import cartRoutes from "./routes/cartRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
@@ -13,7 +15,6 @@ import productRoutes from "./routes/productRoutes.js";
 dotenv.config();
 const app = express();
 
-import path from 'path';
 
 // Serve frontend static files
 app.use(express.static(path.join(__dirname, "frontend", "build")));
