@@ -3,18 +3,20 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
 import cookieParser from "cookie-parser"; // ✅ Added for cookies
-import path from 'path';
+import { fileURLToPath } from 'url'; // ✅ Import to fix __dirname in ES modules
+import { dirname } from 'path'; // ✅ Import to fix __dirname in ES modules
+import path from "path"; // ✅ Import path in ES module
 
-// import process from "process"; 
 import authRoutes from "./routes/authRoute.js";
 import cartRoutes from "./routes/cartRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
 
-
-
 dotenv.config();
 const app = express();
 
+// Fix __dirname for ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 // Serve frontend static files
 app.use(express.static(path.join(__dirname, "frontend", "build")));
@@ -23,8 +25,6 @@ app.use(express.static(path.join(__dirname, "frontend", "build")));
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "frontend", "build", "index.html"));
 });
-
-
 
 app.use(cors({
   origin: ["https://rohitopc.vercel.app"], // ✅ Only frontend URL
