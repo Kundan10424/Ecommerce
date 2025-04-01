@@ -13,7 +13,8 @@ import productRoutes from "./routes/productRoutes.js";
 dotenv.config();
 const app = express();
 
-import path from 'path'
+import path from 'path';
+
 // Serve frontend static files
 app.use(express.static(path.join(__dirname, "frontend", "build")));
 
