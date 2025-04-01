@@ -8,10 +8,11 @@ import authRoutes from "./routes/authRoute.js";
 import cartRoutes from "./routes/cartRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
 
+import path from "path"
+
 dotenv.config();
 const app = express();
 
-const path = require("path");
 
 // Serve frontend static files
 app.use(express.static(path.join(__dirname, "frontend", "build")));
