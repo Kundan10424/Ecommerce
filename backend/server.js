@@ -13,7 +13,7 @@ const app = express();
 
 
 app.use(cors({
-  origin: ["https://rohitopc.vercel.app/"], // ✅ Only frontend URL
+  origin: ["https://rohitopc.vercel.app"], // ✅ Only frontend URL
   credentials: true, // ✅ Allows cookies
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"]
