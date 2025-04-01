@@ -4,7 +4,7 @@
     import { toast, ToastContainer } from "react-toastify";
     import "react-toastify/dist/ReactToastify.css";
 
-    const API_URL = "https://ecommerce-production-aa96.up.railway.app/api"
+    const API_URL = "https://ecommerce-production-0dc2.up.railway.app/api"
 
     const Buy = () => {
         const { title } = useParams();

@@ -5,7 +5,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const API_URL = "https://ecommerce-production-aa96.up.railway.app/api";
+const API_URL = "https://ecommerce-production-0dc2.up.railway.app/api";
 
 const Cart = () => {
   const [cart, setCart] = useState([]);

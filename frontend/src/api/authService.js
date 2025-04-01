@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "https://ecommerce-production-aa96.up.railway.app/api"; // Base API URL
+const API_URL = "https://ecommerce-production-0dc2.up.railway.app/api"; // Base API URL
 
 // Register User
 // // Register User

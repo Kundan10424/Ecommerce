@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash, FaEnvelope } from "react-icons/fa";
 import axios from "axios";
 
-const API_URL = "https://ecommerce-production-aa96.up.railway.app/api"
+const API_URL = "https://ecommerce-production-0dc2.up.railway.app/api"
 
 const Login = () => {
     useEffect(() => {

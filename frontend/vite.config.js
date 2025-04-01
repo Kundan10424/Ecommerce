@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "https://ecommerce-production-aa96.up.railway.app/",
+        target: "https://ecommerce-production-0dc2.up.railway.app/",
         changeOrigin: true,
         secure: false
       }

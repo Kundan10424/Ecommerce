@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import Loader from "../components/Loader"; // ✅ Import Loader component
 
-const API_URL = "https://ecommerce-production-aa96.up.railway.app/api"
+const API_URL = "https://ecommerce-production-0dc2.up.railway.app/api"
 
 const Shop = () => {
   const [products, setProducts] = useState([]);

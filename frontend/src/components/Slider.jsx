@@ -14,7 +14,7 @@ const CollectionSlider = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await axios.get("https://ecommerce-production-aa96.up.railway.app/api/products"); 
+                const response = await axios.get("https://ecommerce-production-0dc2.up.railway.app/api/products"); 
                 setProducts(response.data); // Assuming API returns an array of products
             } catch (error) {
                 console.error("Error fetching products:", error);
